@@ -1,0 +1,29 @@
+﻿@model UserViewModel
+
+<h1> Liste des utilisateurs </h1>
+<a asp-controller="User" asp-action="Create"> <button class="btn btn-primary">Ajouter un utilisateur</button> </a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Adresse</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(User user in Model.Users)
+		{
+			<tr>
+				<td>@user.UserId</td>
+				<td>@user.Nom</td>
+				<td>@user.Prenom</td>
+				<td>@user.Adresse	</td>
+				<td>
+					<a asp-controller="User" asp-action="Remove" asp-route-id="@user.UserId" class="btn btn-sm btn-outline-danger">Supprimer</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
